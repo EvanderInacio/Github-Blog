@@ -15,4 +15,8 @@ export const { styled, globalCss, getCssText } = createStitches({
       default: "Nunito",
     },
   },
+
+  media: {
+    md: '(max-width: 640px)',
+  },
 })
