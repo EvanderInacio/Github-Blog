@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { FaGithub, FaBuilding, FaExternalLinkAlt, FaUserFriends } from 'react-icons/fa'
 
 import { Layout } from '../Layouts'
@@ -29,6 +30,7 @@ export function UseCard({ user }: UserCardProps) {
         "@initial" : "rowGap",
         "@md" : "columnGap",
         }}>
+          
         <img src={user.avatar} alt={user.name} />
         
         <UserCardContent>
