@@ -1,6 +1,6 @@
 import { FaGithub, FaBuilding, FaExternalLinkAlt, FaUserFriends } from 'react-icons/fa'
 
-import { Layout } from '../layouts'
+import { Layout } from '../Layouts'
 import {
   InfoCard,
   UserCardContainer,
@@ -8,14 +8,28 @@ import {
   UserCardNameContainer
 } from './styles'
 
-export function UseCard() {
+interface User {
+  name: string;
+  company: string;
+  bio: string;
+  followers: number,
+  url: string;
+  avatar: string;
+  login: string;
+}
+
+interface UserCardProps {
+  user: User;
+}
+
+export function UseCard({ user }: UserCardProps) {
   return (
     <Layout>
       <UserCardContainer response={{
         "@initial" : "rowGap",
         "@md" : "columnGap",
         }}>
-        <img src="https://github.com/EvanderInacio.png" alt="Foto de perfil" />
+        <img src={user.avatar} alt={user.name} />
         
         <UserCardContent>
           <UserCardNameContainer response={{
@@ -23,14 +37,14 @@ export function UseCard() {
             "@md": "columnGap",
             }}
           > 
-            <h2>Evander Inácio</h2>
+            <h2>{user.name}</h2>
 
-            <a href="https://github.com/EvanderInacio" target="_blank" rel="noopener noreferrer">
+            <a href={user.url} target="_blank" rel="noopener noreferrer">
               Github <FaExternalLinkAlt color="#3294F8" size="12px"/>
             </a>
           </UserCardNameContainer>
 
-            <p>Desenvolvedor Front End.</p>
+            <p>{user.bio}</p>
 
             <InfoCard
               response={{
@@ -40,15 +54,15 @@ export function UseCard() {
             >
               <span>
                 <FaGithub size="18px" color="#3A536B"/>
-                Evander Inácio
+                {user.name}
               </span>
               <span>
                 <FaBuilding size="18px" color="#3A536B"/>
-                NaN
+                {user.company}
               </span>
               <span>
                 <FaUserFriends size="18px" color="#3A536B"/>
-                175
+                {user.followers}
               </span>
             </InfoCard>
          
