@@ -76,6 +76,11 @@ export const InfoCard = styled("div" , {
     display: "flex",
     alignItems: "center",
     gap: "8px",
+
+    a: {
+      color: "$brand",
+      textDecoration: "none",
+    }
   },
 
   variants: {

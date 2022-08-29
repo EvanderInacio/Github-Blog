@@ -1,15 +1,20 @@
+import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import debounce from 'lodash.debounce'
 import type { NextPage } from 'next'
+import { useState } from 'react'
 import { Header } from '../components/Header'
 import { Layout } from '../components/Layouts'
 import { PostList } from '../components/PostList'
 import { UseCard } from '../components/useCard'
+import useDebounce from '../hooks/useDebounce'
 import { InputContainer, InputHeader } from '../styles/pages/home.styles'
 
 const GITHUB_USER_NAME = "EvanderInacio"
+const GITHUB_REPOSITORY = "EvanderInacio/Github-Blog"
 interface User {
   name: string;
-  company: string;
+  blog: string;
   bio: string;
   followers: number,
   url: string;
@@ -22,6 +27,17 @@ interface HomeProps {
 }
 
 export default function Home({ user }: HomeProps) {
+  const [search, setSearch] = useState('')
+  const debounceSearch = useDebounce(search)
+  async function fetchPosts(q: string) {
+    const { data } = await axios.get(`https://api.github.com/search/issues`, {
+      params: { q: `repo:${GITHUB_REPOSITORY} ${q}` },
+    })
+    return data
+  }
+
+  const { data } = useQuery(["post", debounceSearch], () => fetchPosts(debounceSearch))
+
   return (
     <div>
       <Header />
@@ -31,13 +47,18 @@ export default function Home({ user }: HomeProps) {
           <InputHeader>
             <h3>Publicações</h3>
 
-            <span>6 publicações</span>
+            <span>{data?.total_count} publicações</span>
           </InputHeader>
 
-          <input type="text" placeholder='Buscar conteúdo' />
+          <input 
+            type="text" 
+            placeholder='Buscar conteúdo' 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </InputContainer>
 
-        <PostList />
+        <PostList posts={data?.items} />
       </Layout>
     </div>
   )
@@ -48,7 +69,7 @@ export async function getStaticProps() {
 
   const user = {
     name: data.name,
-    company: data.company,
+    blog: data.blog,
     bio: data.bio,
     followers: data.followers,
     url: data.html_url,

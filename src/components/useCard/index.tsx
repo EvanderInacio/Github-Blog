@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { FaGithub, FaBuilding, FaExternalLinkAlt, FaUserFriends } from 'react-icons/fa'
+import Link from 'next/link';
+import { FaGithub, FaLink, FaExternalLinkAlt, FaUserFriends } from 'react-icons/fa'
 
 import {
   InfoCard,
@@ -10,7 +11,7 @@ import {
 
 interface User {
   name: string;
-  company: string;
+  blog: string;
   bio: string;
   followers: number,
   url: string;
@@ -57,8 +58,8 @@ export function UseCard({ user }: UserCardProps) {
                 {user.name}
               </span>
               <span>
-                <FaBuilding size="18px" color="#3A536B"/>
-                {user.company}
+                <FaLink size="18px" color="#3A536B"/>
+                <Link href={user.blog}>evanderinacio.com</Link>
               </span>
               <span>
                 <FaUserFriends size="18px" color="#3A536B"/>
