@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { FaGithub, FaBuilding, FaExternalLinkAlt, FaUserFriends } from 'react-icons/fa'
 
-import { Layout } from '../Layouts'
 import {
   InfoCard,
   UserCardContainer,
@@ -25,7 +24,6 @@ interface UserCardProps {
 
 export function UseCard({ user }: UserCardProps) {
   return (
-    <Layout>
       <UserCardContainer response={{
         "@initial" : "rowGap",
         "@md" : "columnGap",
@@ -70,6 +68,5 @@ export function UseCard({ user }: UserCardProps) {
          
         </UserCardContent>
       </UserCardContainer>
-    </Layout>
   )
 }

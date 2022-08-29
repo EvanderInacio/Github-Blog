@@ -1,7 +1,9 @@
 import axios from 'axios'
 import type { NextPage } from 'next'
 import { Header } from '../components/Header'
+import { Layout } from '../components/Layouts'
 import { UseCard } from '../components/useCard'
+import { InputContainer, InputHeader } from '../styles/pages/home.styles'
 
 const GITHUB_USER_NAME = "EvanderInacio"
 interface User {
@@ -22,7 +24,18 @@ export default function Home({ user }: HomeProps) {
   return (
     <div>
       <Header />
-      <UseCard user={user}/>
+      <Layout>
+        <UseCard user={user}/>
+        <InputContainer>
+          <InputHeader>
+            <h3>Publicações</h3>
+
+            <span>6 publicações</span>
+          </InputHeader>
+
+          <input type="text" placeholder='Buscar conteúdo' />
+        </InputContainer>
+      </Layout>
     </div>
   )
 }
