@@ -2,6 +2,7 @@ import axios from 'axios'
 import type { NextPage } from 'next'
 import { Header } from '../components/Header'
 import { Layout } from '../components/Layouts'
+import { PostList } from '../components/PostList'
 import { UseCard } from '../components/useCard'
 import { InputContainer, InputHeader } from '../styles/pages/home.styles'
 
@@ -35,6 +36,8 @@ export default function Home({ user }: HomeProps) {
 
           <input type="text" placeholder='Buscar conteúdo' />
         </InputContainer>
+
+        <PostList />
       </Layout>
     </div>
   )
