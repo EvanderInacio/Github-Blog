@@ -18,4 +18,12 @@ export const globalStyles = globalCss({
   "h1, h2, h3, h4, h5, h6": {
     color: "$title"
   },
+  "::-webkit-scrollbar": {
+    width: "0.5rem",
+    backgroundColor: "$borderInput",
+  },
+  "::-webkit-scrollbar-thumb": {
+    backgroundColor: "$brand",
+    borderRadius: "0.6rem",
+  }
 })

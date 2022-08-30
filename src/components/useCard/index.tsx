@@ -59,7 +59,9 @@ export function UseCard({ user }: UserCardProps) {
               </span>
               <span>
                 <FaLink size="18px" color="#3A536B"/>
-                <Link href={user.blog}>evanderinacio.com</Link>
+                <Link href={user.blog} passHref>
+                  <a target="_blank">evanderinacio.com</a>
+                </Link>
               </span>
               <span>
                 <FaUserFriends size="18px" color="#3A536B"/>
