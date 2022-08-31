@@ -6,10 +6,10 @@ import Link from 'next/link'
 
 interface PostListProps {
   posts: {
-    title: string
-    number: number
-    created_at: string
-    body: string
+    title: string;
+    number: number;
+    created_at: string;
+    body: string;
   }[]
 }
 

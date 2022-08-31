@@ -39,8 +39,6 @@ export default function Home({ user }: HomeProps) {
   const { data } = useQuery(["post", debounceSearch], () => fetchPosts(debounceSearch))
 
   return (
-    <div>
-      <Header />
       <Layout>
         <UseCard user={user}/>
         <InputContainer>
@@ -60,7 +58,6 @@ export default function Home({ user }: HomeProps) {
 
         <PostList posts={data?.items} />
       </Layout>
-    </div>
   )
 }
 
